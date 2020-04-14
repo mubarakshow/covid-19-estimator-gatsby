@@ -150,6 +150,7 @@ class IndexPage extends React.Component {
                 type="submit"
                 className="btn-danger "
                 aria-Label="Submit Button"
+                className='button'
               >
                 Submit
               </Button>

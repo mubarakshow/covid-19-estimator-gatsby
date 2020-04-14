@@ -7,3 +7,14 @@
 .impactDivs {
   padding: 2em;
 }
+
+.button {
+  border-style: none;
+  border-color: white;
+  background-color: black;
+  width: 100%;
+}
+.button:hover {
+  background-color: brown;
+  color: white;
+}
