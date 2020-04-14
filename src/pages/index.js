@@ -131,7 +131,7 @@ class IndexPage extends React.Component {
                   onChange={this.handleTimeElapsChange} 
                 />
               </Form.Group>
-              <Button type="submit">Submit</Button>
+              <Button data-go-estimate type="submit">Submit</Button>
             </Form>
           </div>
         </div>
