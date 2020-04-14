@@ -78,11 +78,11 @@ class IndexPage extends React.Component {
               const { id, title, estimate: {impact, severeImpact} } = data;
               return (
                 <Row className="text-center impactDivs" key={id}>
-                  <Col lg={6} className="neumorph normalImpact">                      
+                  <Col lg={6} xs={6} sm={6} className="neumorph normalImpact">                      
                     <h3>{impact}</h3>
                     <p>{title}</p>
                   </Col>
-                  <Col lg={6} className="neumorph severeImpact">
+                  <Col lg={6} xs={6} sm={6} className="neumorph severeImpact">
                     <h3>{severeImpact}</h3>
                     <p>{title}</p>
                   </Col>
