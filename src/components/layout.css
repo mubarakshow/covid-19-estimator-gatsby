@@ -387,6 +387,7 @@ p {
   margin-bottom: 1.45rem;
   font-size: 0.8em;
   font-weight: 500;
+  font-display: swap;
   font-family: Rubik, Helvetica, sans-serif;
 }
 figure {

@@ -6,6 +6,8 @@ import SEO from "../components/seo"
 import { Form, Button, Row, Col} from 'react-bootstrap'
 import { outputData } from '../data/data';
 import covid19ImpactEstimator from '../estimator';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "./src/styles/index.css"
 
 class IndexPage extends React.Component {
   constructor(props) {
