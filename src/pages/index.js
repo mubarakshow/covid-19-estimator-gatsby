@@ -2,13 +2,12 @@ import React from "react"
 // import { Link } from "gatsby"
 import Layout from "../components/layout"
 // import Image from "../components/image"
-// import SEO from "../components/seo"
+import SEO from "../components/seo"
 import { Form, Button} from 'react-bootstrap'
 import { outputData } from '../data/data';
-import covid19ImpactEstimator from '../estimator'
+import covid19ImpactEstimator from '../estimator';
 
 class IndexPage extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -27,7 +26,7 @@ class IndexPage extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   };
-
+  
   handlePopulationChange = event => {
     this.setState({population: event.target.value})
   }
@@ -43,7 +42,7 @@ class IndexPage extends React.Component {
   handlePeriodTypeChange = event => {
     this.setState({periodType: event.target.value})
   }
-
+  
   handleSubmit = event => {
     event.preventDefault();
     const outputData = covid19ImpactEstimator({
@@ -63,9 +62,14 @@ class IndexPage extends React.Component {
   }
 
   render() {
-
+    
     return (
       <Layout>
+        <SEO 
+          title="Covid-19 Estimator by Mubarak Showole"
+          description="estimate impact and severe impact of covid-19 around the world"
+          lang="en" 
+        />
         <div>
           <div className="neumorph displayContianer" style={{
             textAlign: 'center',
@@ -97,19 +101,22 @@ class IndexPage extends React.Component {
                 <Form.Control
                   data-population
                   value={this.state.population} 
-                  placeholder="Population" 
+                  placeholder="Population"
+                  aria-Label="Population"
                   onChange={this.handlePopulationChange}
                 />
                 <Form.Control
                   data-reported-cases
                   value={this.state.reportedCases} 
                   placeholder="Reported Cases"
+                  aria-Label="Reported Cases"
                   onChange={this.handleReportedCasesChange} 
                 />
                 <Form.Control 
                   data-total-hospital-beds
                   value={this.state.totalHospitalBeds} 
                   placeholder="Total Hospital Beds"
+                  aria-Label="Total Hospital Beds"
                   onChange={this.handleHospitalBedsChange}
                 />
               </Form.Group>
@@ -118,6 +125,7 @@ class IndexPage extends React.Component {
                 <Form.Control as="select"
                   data-period-type
                   value={this.state.periodType}
+                  aria-Label="Select Period Type"
                   onChange={this.handlePeriodTypeChange}
                 >
                   <option value="days">Days</option>
@@ -128,10 +136,17 @@ class IndexPage extends React.Component {
                   data-time-to-elapse 
                   value={this.state.timeToElapse} 
                   placeholder="Time to Elapse"
+                  aria-Label="Time to Elapse"
                   onChange={this.handleTimeElapsChange} 
                 />
               </Form.Group>
-              <Button data-go-estimate type="submit">Submit</Button>
+              <Button 
+                data-go-estimate 
+                type="submit"
+                aria-Label="Submit Button"
+              >
+                Submit
+              </Button>
             </Form>
           </div>
         </div>
