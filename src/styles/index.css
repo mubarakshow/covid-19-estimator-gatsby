@@ -1,0 +1,10 @@
+.formContainer {
+  background-color: pink;
+  padding:30px;
+  border-radius: 5px;
+  height: fit-content;
+}
+
+.impactDivs {
+  padding: 2em;
+}

@@ -3,7 +3,7 @@ import React from "react"
 import Layout from "../components/layout"
 // import Image from "../components/image"
 import SEO from "../components/seo"
-import { Form, Button} from 'react-bootstrap'
+import { Form, Button, Row, Col} from 'react-bootstrap'
 import { outputData } from '../data/data';
 import covid19ImpactEstimator from '../estimator';
 
@@ -65,80 +65,83 @@ class IndexPage extends React.Component {
     
     return (
       <Layout>
-        <SEO 
-          title="Covid-19 Estimator by Mubarak Showole"
-          description="estimate impact and severe impact of covid-19 around the world"
-          lang="en" 
-        />
-        <div>
-          <div className="neumorph displayContianer" style={{
-            textAlign: 'center',
-            justifyContent: 'center'
-          }}>
+        <Row>
+          <SEO 
+            title="Covid-19 Estimator by Mubarak Showole"
+            description="estimate impact and severe impact of covid-19 around the world"
+            lang="en" 
+          />
+          <Col xl={8} sm={8}>
             {this.state.outputData.map(data => {
               const { id, title, estimate: {impact, severeImpact} } = data;
               return (
-                <div className="impactDivs" key={id} style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'auto auto',
-                  gridColumnGap: '3em',
-                }}>                  
-                  <div className="neumorph normalImpact">
+                <Row className="text-center impactDivs" key={id}>
+                  <Col lg={6} className="neumorph normalImpact">                      
                     <h3>{impact}</h3>
                     <p>{title}</p>
-                  </div>
-                  <div className="neumorph severeImpact">
+                  </Col>
+                  <Col lg={6} className="neumorph severeImpact">
                     <h3>{severeImpact}</h3>
                     <p>{title}</p>
-                  </div>
-                </div>
+                  </Col>
+                </Row>
               )
             })}
-          </div>
-          <div className="formContainer">
+          </Col>
+          <Col className="formContainer" xl={4} sm={4}>
             <Form onSubmit={this.handleSubmit}>
-              <Form.Group controlId="xyz">
-                <Form.Control
-                  data-population
-                  value={this.state.population} 
-                  placeholder="Population"
-                  aria-Label="Population"
-                  onChange={this.handlePopulationChange}
-                />
-                <Form.Control
-                  data-reported-cases
-                  value={this.state.reportedCases} 
-                  placeholder="Reported Cases"
-                  aria-Label="Reported Cases"
-                  onChange={this.handleReportedCasesChange} 
-                />
-                <Form.Control 
-                  data-total-hospital-beds
-                  value={this.state.totalHospitalBeds} 
-                  placeholder="Total Hospital Beds"
-                  aria-Label="Total Hospital Beds"
-                  onChange={this.handleHospitalBedsChange}
-                />
+              <Form.Group as={Row} controlId="xyz">
+                  <Form.Control
+                    data-population
+                    value={this.state.population} 
+                    placeholder="Population"
+                    aria-Label="Population"
+                    onChange={this.handlePopulationChange}
+                    style={{
+                      marginBottom: '2em'
+                    }}
+                  />
+                  <Form.Control
+                    data-reported-cases
+                    value={this.state.reportedCases} 
+                    placeholder="Reported Cases"
+                    aria-Label="Reported Cases"
+                    onChange={this.handleReportedCasesChange}
+                    style={{
+                      marginBottom: '2em'
+                    }} 
+                  />
+                  <Form.Control 
+                    data-total-hospital-beds
+                    value={this.state.totalHospitalBeds} 
+                    placeholder="Total Hospital Beds"
+                    aria-Label="Total Hospital Beds"
+                    onChange={this.handleHospitalBedsChange}
+                  />
               </Form.Group>
-              <Form.Group controlId="zzz">
+              <br />
+              <Form.Group as={Row} controlId="zzz">
                 <Form.Label>Period Type</Form.Label>
-                <Form.Control as="select"
-                  data-period-type
-                  value={this.state.periodType}
-                  aria-Label="Select Period Type"
-                  onChange={this.handlePeriodTypeChange}
-                >
-                  <option value="days">Days</option>
-                  <option value="weeks">Weeks</option>
-                  <option value="months">Months</option>
-                </Form.Control>
-                <Form.Control
-                  data-time-to-elapse 
-                  value={this.state.timeToElapse} 
-                  placeholder="Time to Elapse"
-                  aria-Label="Time to Elapse"
-                  onChange={this.handleTimeElapsChange} 
-                />
+                  <Form.Control as="select"
+                    data-period-type
+                    value={this.state.periodType}
+                    aria-Label="Select Period Type"
+                    onChange={this.handlePeriodTypeChange}
+                    style={{
+                      marginBottom: '2em'
+                    }}
+                  >
+                    <option value="days">Days</option>
+                    <option value="weeks">Weeks</option>
+                    <option value="months">Months</option>
+                  </Form.Control>
+                  <Form.Control
+                    data-time-to-elapse 
+                    value={this.state.timeToElapse} 
+                    placeholder="Time to Elapse"
+                    aria-Label="Time to Elapse"
+                    onChange={this.handleTimeElapsChange} 
+                  />  
               </Form.Group>
               <Button 
                 data-go-estimate 
@@ -148,8 +151,8 @@ class IndexPage extends React.Component {
                 Submit
               </Button>
             </Form>
-          </div>
-        </div>
+          </Col>
+        </Row>
       </Layout>
     );
   }
