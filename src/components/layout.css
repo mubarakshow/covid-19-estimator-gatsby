@@ -62,10 +62,9 @@ p {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
-  font-size: 0.8em;
-  font-weight: 500;
+  font-size: 18px;
+  font-family: Helvetica, sans-serif;
   font-display: swap;
-  font-family: Rubik, Helvetica, sans-serif;
 }
 
 @media only screen and (max-width: 480px) {
