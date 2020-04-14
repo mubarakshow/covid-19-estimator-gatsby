@@ -148,6 +148,7 @@ class IndexPage extends React.Component {
               <Button 
                 data-go-estimate 
                 type="submit"
+                className="btn-danger "
                 aria-Label="Submit Button"
               >
                 Submit
