@@ -162,7 +162,7 @@ class IndexPage extends React.Component {
                     data-population
                     value={this.state.population} 
                     placeholder="Population"
-                    aria-Label="Population"
+                    aria-label="Population"
                     onChange={this.handlePopulationChange}
                     style={{
                       marginBottom: '2em'
@@ -172,7 +172,7 @@ class IndexPage extends React.Component {
                     data-reported-cases
                     value={this.state.reportedCases} 
                     placeholder="Reported Cases"
-                    aria-Label="Reported Cases"
+                    aria-label="Reported Cases"
                     onChange={this.handleReportedCasesChange}
                     style={{
                       marginBottom: '2em'
@@ -182,7 +182,7 @@ class IndexPage extends React.Component {
                     data-total-hospital-beds
                     value={this.state.totalHospitalBeds} 
                     placeholder="Total Hospital Beds"
-                    aria-Label="Total Hospital Beds"
+                    aria-label="Total Hospital Beds"
                     onChange={this.handleHospitalBedsChange}
                   />
               </Form.Group>
@@ -192,7 +192,7 @@ class IndexPage extends React.Component {
                   <Form.Control as="select"
                     data-period-type
                     value={this.state.periodType}
-                    aria-Label="Select Period Type"
+                    aria-label="Select Period Type"
                     onChange={this.handlePeriodTypeChange}
                     style={{
                       marginBottom: '2em'
@@ -206,7 +206,7 @@ class IndexPage extends React.Component {
                     data-time-to-elapse 
                     value={this.state.timeToElapse} 
                     placeholder="Time to Elapse"
-                    aria-Label="Time to Elapse"
+                    aria-label="Time to Elapse"
                     onChange={this.handleTimeElapsChange} 
                   />  
               </Form.Group>
@@ -214,7 +214,7 @@ class IndexPage extends React.Component {
                 data-go-estimate 
                 type="submit"
                 className="btn-danger button"
-                aria-Label="Submit Button"
+                aria-label="Submit Button"
               >
                 Submit
               </Button>
