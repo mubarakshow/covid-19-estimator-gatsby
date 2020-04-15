@@ -1,5 +1,4 @@
-import { outputData } from "./data/data";
-const covid19ImpactEstimator = (data, initialData=outputData) => {
+const covid19ImpactEstimator = (data) => {
   const input = data;
   // console.log(input);
   const {
@@ -77,59 +76,64 @@ const covid19ImpactEstimator = (data, initialData=outputData) => {
     return y;
   };
 
-  //currentlyInfected initialData [0]
-  initialData[0].estimate.impact = currentlyInfectedNormal;
-  initialData[0].estimate.severeImpact = currentlyInfectedSevere;
-
-  //infectionsByRequestedTime initialData [1]
-  initialData[1].estimate.impact = infectionsByRTN;
-  initialData[1].estimate.severeImpact = infectionsByRTS;
-
-  //severeCasesByRequestedTime initialData [2]
-  initialData[2].estimate.impact = severeCaseByRTN;
-  initialData[2].estimate.severeImpact = severeCaseByRTS;
-  
-  //hospitalBedsByRequestedTime initialData [3]
-  initialData[3].estimate.impact = getHospitalBedsByRequestedTime(severeCaseByRTN);
-  initialData[3].estimate.severeImpact = getHospitalBedsByRequestedTime(severeCaseByRTS);
-
-  //casesForICUByRequestedTime initialData [4]
-  initialData[4].estimate.impact = getCasesForICUByRequestedTime(infectionsByRTN);
-  initialData[4].estimate.severeImpact = getCasesForICUByRequestedTime(infectionsByRTS);
-
-  //casesForVentilatorsByRequestedTime initialData [5]
-  initialData[5].estimate.impact = getCasesForVentilatorsByRequestedTime(infectionsByRTN);
-  initialData[5].estimate.severeImpact = getCasesForVentilatorsByRequestedTime(infectionsByRTS);
-
-  //dollarsInFlight initialData [6]
-  initialData[6].estimate.impact = getDollarsInFlight(infectionsByRTN);
-  initialData[6].estimate.severeImpact = getDollarsInFlight(infectionsByRTS);
-
-  
-  // const responseData = {
-  //   data: input,
-  //   impact: {
-  //     currentlyInfected: currentlyInfectedNormal,
-  //     infectionsByRequestedTime: infectionsByRTN,
-  //     severeCasesByRequestedTime: severeCaseByRTN,
-  //     hospitalBedsByRequestedTime: getHospitalBedsByRequestedTime(severeCaseByRTN),
-  //     casesForICUByRequestedTime: getCasesForICUByRequestedTime(infectionsByRTN),
-  //     casesForVentilatorsByRequestedTime: getCasesForVentilatorsByRequestedTime(infectionsByRTN),
-  //     dollarsInFlight: getDollarsInFlight(infectionsByRTN)
-  //   },
-  //   severeImpact: {
-  //     currentlyInfected: currentlyInfectedSevere,
-  //     infectionsByRequestedTime: infectionsByRTS,
-  //     severeCasesByRequestedTime: severeCaseByRTS,
-  //     hospitalBedsByRequestedTime: getHospitalBedsByRequestedTime(severeCaseByRTS),
-  //     casesForICUByRequestedTime: getCasesForICUByRequestedTime(infectionsByRTS),
-  //     casesForVentilatorsByRequestedTime: getCasesForVentilatorsByRequestedTime(infectionsByRTS),
-  //     dollarsInFlight: getDollarsInFlight(infectionsByRTS)
-  //   }
-  // };
-
-  // console.log(responseData);
-  return initialData;
+  return [
+    {
+      id: 'currentlyInfected',
+      title: 'Currently Infected',
+      estimate: {
+        impact: currentlyInfectedNormal,
+        severeImpact: currentlyInfectedSevere
+      }
+    },
+    {
+      id: 'infectionsByRequestedTime',
+      title: 'Infected By Requested Time',
+      estimate: {
+        impact: infectionsByRTN,
+        severeImpact: infectionsByRTS
+      }
+    },
+    {
+      id: 'severeCasesByRequestedTime',
+      title: 'Severe Cases By Requested Time',
+      estimate: {
+        impact: severeCaseByRTN,
+        severeImpact: severeCaseByRTS
+      }
+    },
+    {
+      id: 'hospitalBedsByRequestedTime',
+      title: 'Hospital Beds By Requested Time',
+      estimate: {
+        impact: getHospitalBedsByRequestedTime(severeCaseByRTN),
+        severeImpact: getHospitalBedsByRequestedTime(severeCaseByRTS)
+      }
+    },
+    {
+      id: 'casesForICUByRequestedTime',
+      title: 'Cases For ICU By Requested Time',
+      estimate: {
+        impact: getCasesForICUByRequestedTime(infectionsByRTN),
+        severeImpact: getCasesForICUByRequestedTime(infectionsByRTS)
+      }
+    },
+    {
+      id: 'casesForVentilatorsByRequestedTime',
+      title: 'Cases For Ventilators By Requested Time',
+      estimate: {
+        impact: getCasesForVentilatorsByRequestedTime(infectionsByRTN),
+        severeImpact: getCasesForVentilatorsByRequestedTime(infectionsByRTS)
+      }
+    },
+    {
+      id: 'dollarsInFlight',
+      title: 'Dollars In Flight',
+      estimate: {
+        impact: getDollarsInFlight(infectionsByRTN),
+        severeImpact: getDollarsInFlight(infectionsByRTS)
+      }
+    }
+  ];
 };
 
 export default covid19ImpactEstimator;

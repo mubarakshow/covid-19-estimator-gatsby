@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 // import Image from "../components/image"
 import SEO from "../components/seo"
 import { Form, Button, Row, Col} from 'react-bootstrap'
-import { outputData } from '../data/data';
+// import { outputData } from '../data/data';
 import covid19ImpactEstimator from '../estimator';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/index.css"
@@ -24,7 +24,64 @@ class IndexPage extends React.Component {
       totalHospitalBeds: '',
       timeToElapse: '',
       periodType: '',
-      outputData
+      outputData: [
+        {
+          id: 'currentlyInfected',
+          title: 'Currently Infected',
+          estimate: {
+            impact: '',
+            severeImpact: ''
+          }
+        },
+        {
+          id: 'infectionsByRequestedTime',
+          title: 'Infected By Requested Time',
+          estimate: {
+            impact: '',
+            severeImpact: ''
+          }
+        },
+        {
+          id: 'severeCasesByRequestedTime',
+          title: 'Severe Cases By Requested Time',
+          estimate: {
+            impact: '',
+            severeImpact: ''
+          }
+        },
+        {
+          id: 'hospitalBedsByRequestedTime',
+          title: 'Hospital Beds By Requested Time',
+          estimate: {
+            impact: '',
+            severeImpact: ''
+          }
+        },
+        {
+          id: 'casesForICUByRequestedTime',
+          title: 'Cases For ICU By Requested Time',
+          estimate: {
+            impact: '',
+            severeImpact: ''
+          }
+        },
+        {
+          id: 'casesForVentilatorsByRequestedTime',
+          title: 'Cases For Ventilators By Requested Time',
+          estimate: {
+            impact: '',
+            severeImpact: ''
+          }
+        },
+        {
+          id: 'dollarsInFlight',
+          title: 'Dollars In Flight',
+          estimate: {
+            impact: '',
+            severeImpact: ''
+          }
+        }  
+      ]
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   };
@@ -74,6 +131,14 @@ class IndexPage extends React.Component {
             lang="en" 
           />
           <Col xl={8} sm={8}>
+            <Row className="text-center">
+              <Col lg={6} xs={6} sm={6}>
+                <h3>Normal Impact</h3>
+              </Col>
+              <Col lg={6} xs={6} sm={6}>
+                <h3>Severe Impact</h3>
+              </Col>
+            </Row>
             {this.state.outputData.map(data => {
               const { id, title, estimate: {impact, severeImpact} } = data;
               return (
