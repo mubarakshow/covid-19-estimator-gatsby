@@ -5,6 +5,36 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    `gatsby-plugin-stylus`,
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-less`,
+    { 
+      resolve: `gatsby-plugin-purgecss`,
+      options: {
+        printRejected: true,
+        develop: true, // Enable while using `gatsby develop`
+        // tailwind: true, // Enable tailwindcss support
+        whitelist: [
+          "body",
+          "html",
+          "fa",
+          "form-control",
+          "form-group", 
+          "row",
+          "col",
+          "btn",
+          "col-xl-8", 
+          'col-xl-6', 
+          "col-xl-4",
+          "col-lg-6",
+          "col-sm-6",
+          "col-sm-4",
+          "col-6",
+          "text-center"
+        ],
+        // ignore: ['/ignored.css', 'prismjs/', 'docsearch.js/'], // Ignore files/folders 
+      }
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -26,12 +56,6 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
-    },
-    { 
-      resolve: `gatsby-plugin-purgecss`,
-      options: {
-        printRejected: true, 
-      }
     },
     `gatsby-plugin-no-javascript`
     // this (optional) plugin enables Progressive Web App + Offline functionality
