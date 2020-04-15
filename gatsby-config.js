@@ -33,7 +33,6 @@ module.exports = {
         printRejected: true, 
       }
     },
-    `gatsby-plugin-preact`,
     `gatsby-plugin-no-javascript`
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
