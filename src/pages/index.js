@@ -153,7 +153,14 @@ class IndexPage extends React.Component {
                       <div className="neumorph">
                         <h3>{impact}</h3>
                         <p>{stringChecker(title)}</p>
-                        <span className="brt">by requested time</span>
+                        <InfoPopover
+                          key="pop-pop"
+                          placement="top"
+                          title={title.slice(-17)}
+                          content="This calculated by the time to elapse"
+                        >
+                          <span className="brt">by requested time</span>
+                        </InfoPopover>
                       </div>
                     )  
                   } else {

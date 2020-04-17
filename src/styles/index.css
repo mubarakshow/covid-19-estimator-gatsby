@@ -20,8 +20,8 @@
 .brt {
   background-color: #e73434;
   padding: 0.3em 0.5em;
-  font-size: 0.7em;
-  font-weight: 500;
+  font-size: calc(8px + (14 - 8) * (100vw - 400px) / (800-400));
+  font-weight: 400;
   color: #ffffff;
   border-radius: 50px;
   box-shadow: 0 5px 20px #bebebe;
