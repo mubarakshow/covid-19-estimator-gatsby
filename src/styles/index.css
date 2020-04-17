@@ -3,16 +3,29 @@
   border-radius: 5px;
   height: fit-content;
 }
+.col-title {
+  margin-bottom: 2em;
+}
 .impactDivs {
   padding: 2em;
 }
 .neumorph {
   padding: 1em 1.5em;
-  margin-top: 10px;
-  border-radius: 50px;
+  margin-top: 1em;
+  border-radius: 10px;
   background: #ffffff;
   box-shadow:  13px 13px 27px #d9d9d9, 
   -13px -13px 27px #ffffff;
+}
+.brt {
+  background-color: #e73434;
+  padding: 0.3em 0.5em;
+  font-size: 0.7em;
+  font-weight: 500;
+  color: #ffffff;
+  border-radius: 50px;
+  box-shadow: 0 5px 20px #bebebe;
+  cursor: pointer;
 }
 .button {
   margin-top: 2em;

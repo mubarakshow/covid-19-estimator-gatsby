@@ -15,6 +15,7 @@ module.exports = {
           "body",
           "html",
           "fa",
+          "h5",
           "form-control",
           "form-group", 
           "row",
@@ -27,7 +28,16 @@ module.exports = {
           "col-sm-6",
           "col-sm-4",
           "col-6",
-          "text-center"
+          "text-center",
+          "fade",
+          "show",
+          "popover",
+          "popover-header",
+          "popover-body",
+          "bs-popover-top",
+          "bs-popover-bottom",
+          "bs-popover-left",
+          "bs-popover-right"
         ],
         // ignore: ['/ignored.css', 'prismjs/', 'docsearch.js/'], // Ignore files/folders 
       }

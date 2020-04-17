@@ -3,8 +3,14 @@ import React from "react"
 import Layout from "../components/layout"
 // import Image from "../components/image"
 import SEO from "../components/seo"
-import { Form, Button, Row, Col} from 'react-bootstrap'
+import {
+  Form, 
+  Button, 
+  Row, 
+  Col
+} from 'react-bootstrap'
 // import { outputData } from '../data/data';
+import InfoPopover from '../components/Popovers'
 import covid19ImpactEstimator from '../estimator';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/index.css"
@@ -121,6 +127,12 @@ class IndexPage extends React.Component {
   }
 
   render() {
+    const stringChecker = inputTitle => {
+      if(inputTitle.slice(-18) === ' By Requested Time') {
+        inputTitle = inputTitle.slice(0, -18)
+      }
+      return inputTitle;
+    }
     
     return (
       <Layout>
@@ -131,35 +143,56 @@ class IndexPage extends React.Component {
             lang="en" 
           />
           <Col xl={8} sm={8}>
-            <Row className="text-center">
-              <Col lg={6} xs={6} sm={6}>
-                <h3>Normal Impact</h3>
-              </Col>
-              <Col lg={6} xs={6} sm={6}>
-                <h3>Severe Impact</h3>
-              </Col>
-            </Row>
             <Row className="text-center impactDivs" key='xxx'>
-              <Col lg={4} md={4} xs={6} sm={6} className="normalImpact">                      
+              <Col lg={4} md={4} xs={6} sm={6} className="normalImpact">
+                <h3 className="col-title">Normal Impact</h3>
                 {this.state.outputData.map(data => {
                   const { title, estimate: {impact} } = data;
-                  return (
-                    <div className="neumorph">
-                      <h3>{impact}</h3>
-                      <p>{title}</p>
-                    </div>
-                  )
+                  if(title.slice(-18) === ' By Requested Time') {
+                    return (
+                      <div className="neumorph">
+                        <h3>{impact}</h3>
+                        <p>{stringChecker(title)}</p>
+                        <span className="brt">by requested time</span>
+                      </div>
+                    )  
+                  } else {
+                    return (
+                      <div className="neumorph">
+                        <h3>{impact}</h3>
+                        <p>{stringChecker(title)}</p>
+                      </div>
+                    )
+                  }
                 })}
               </Col>
-              <Col lg={4} md={4} xs={6} sm={6} className="severeImpact">                      
+              <Col lg={4} md={4} xs={6} sm={6} className="severeImpact">  
+                <h3 className="col-title">Severe Impact</h3>                    
                 {this.state.outputData.map(data => {
-                  const { title, estimate: {severeImpact} } = data;
-                  return(
-                    <div className="neumorph">
-                      <h3>{severeImpact}</h3>
-                      <p>{title}</p>
-                    </div>
-                  )
+                  let { title, estimate: {severeImpact} } = data;
+                  if(title.slice(-18) === ' By Requested Time') {
+                    return (
+                      <div className="neumorph">
+                        <h3>{severeImpact}</h3>
+                        <p>{stringChecker(title)}</p>
+                        <InfoPopover
+                          key="pop-pop"
+                          placement="top"
+                          title={title.slice(-17)}
+                          content="This calculated by the time to elapse"
+                        >
+                          <span className="brt">by requested time</span>
+                        </InfoPopover>
+                      </div>
+                    )
+                  } else {
+                    return(
+                      <div className="neumorph">
+                        <h3>{severeImpact}</h3>
+                        <p>{stringChecker(title)}</p>
+                      </div>
+                    )
+                  }
                 })}
               </Col>
             </Row>
