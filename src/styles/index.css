@@ -3,11 +3,17 @@
   border-radius: 5px;
   height: fit-content;
 }
-
 .impactDivs {
   padding: 2em;
 }
-
+.neumorph {
+  padding: 1em 1.5em;
+  margin-top: 10px;
+  border-radius: 50px;
+  background: #ffffff;
+  box-shadow:  13px 13px 27px #d9d9d9, 
+  -13px -13px 27px #ffffff;
+}
 .button {
   margin-top: 2em;
   border-style: none;

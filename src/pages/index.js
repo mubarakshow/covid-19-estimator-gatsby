@@ -35,7 +35,7 @@ class IndexPage extends React.Component {
         },
         {
           id: 'infectionsByRequestedTime',
-          title: 'Infected By Requested Time',
+          title: 'Infected',
           estimate: {
             impact: '',
             severeImpact: ''
@@ -43,7 +43,7 @@ class IndexPage extends React.Component {
         },
         {
           id: 'severeCasesByRequestedTime',
-          title: 'Severe Cases By Requested Time',
+          title: 'Severe Cases',
           estimate: {
             impact: '',
             severeImpact: ''
@@ -51,7 +51,7 @@ class IndexPage extends React.Component {
         },
         {
           id: 'hospitalBedsByRequestedTime',
-          title: 'Hospital Beds By Requested Time',
+          title: 'Hospital Beds',
           estimate: {
             impact: '',
             severeImpact: ''
@@ -59,7 +59,7 @@ class IndexPage extends React.Component {
         },
         {
           id: 'casesForICUByRequestedTime',
-          title: 'Cases For ICU By Requested Time',
+          title: 'Cases For ICU',
           estimate: {
             impact: '',
             severeImpact: ''
@@ -67,7 +67,7 @@ class IndexPage extends React.Component {
         },
         {
           id: 'casesForVentilatorsByRequestedTime',
-          title: 'Cases For Ventilators By Requested Time',
+          title: 'Cases For Ventilators',
           estimate: {
             impact: '',
             severeImpact: ''
@@ -139,23 +139,32 @@ class IndexPage extends React.Component {
                 <h3>Severe Impact</h3>
               </Col>
             </Row>
-            {this.state.outputData.map(data => {
-              const { id, title, estimate: {impact, severeImpact} } = data;
-              return (
-                <Row className="text-center impactDivs" key={id}>
-                  <Col lg={6} xs={6} sm={6} className="neumorph normalImpact">                      
-                    <h3>{impact}</h3>
-                    <p>{title}</p>
-                  </Col>
-                  <Col lg={6} xs={6} sm={6} className="neumorph severeImpact">
-                    <h3>{severeImpact}</h3>
-                    <p>{title}</p>
-                  </Col>
-                </Row>
-              )
-            })}
+            <Row className="text-center impactDivs" key='xxx'>
+              <Col lg={4} md={4} xs={6} sm={6} className="normalImpact">                      
+                {this.state.outputData.map(data => {
+                  const { title, estimate: {impact} } = data;
+                  return (
+                    <div className="neumorph">
+                      <h3>{impact}</h3>
+                      <p>{title}</p>
+                    </div>
+                  )
+                })}
+              </Col>
+              <Col lg={4} md={4} xs={6} sm={6} className="severeImpact">                      
+                {this.state.outputData.map(data => {
+                  const { title, estimate: {severeImpact} } = data;
+                  return(
+                    <div className="neumorph">
+                      <h3>{severeImpact}</h3>
+                      <p>{title}</p>
+                    </div>
+                  )
+                })}
+              </Col>
+            </Row>
           </Col>
-          <Col className="formContainer" xl={4} sm={4}>
+          <Col className="formContainer" xl={4} sm={12}>
             <Form onSubmit={this.handleSubmit}>
               <Form.Group as={Row} controlId="xyz">
                   <Form.Control
